@@ -5,8 +5,8 @@ import { MenuItem, Select } from '@material-ui/core';
 export function LocationSelector(props: any) {
   return (
     <Select
-      value=""
-      onChange={() => false}
+      value={props.value}
+      onChange={(e) => props.onChange(e)}
       displayEmpty
       className='select-country'
     >

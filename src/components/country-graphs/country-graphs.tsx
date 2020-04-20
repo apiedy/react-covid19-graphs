@@ -6,6 +6,7 @@ import { Chart } from "../chart/chart";
 interface GraphsState {
   countries: any[];
   countryData: any[];
+  currentSlug: string;
 }
 
 export class CountryGraphs extends React.Component<{}, GraphsState> {
@@ -13,26 +14,54 @@ export class CountryGraphs extends React.Component<{}, GraphsState> {
     super(props);
     this.state = {
       countries: [],
-      countryData: []
+      countryData: [],
+      currentSlug: ''
     }
-    this.fetchCountries();
   }
 
   fetchCountries = () => {
     fetch('https://api.covid19api.com/countries')
       .then(res => res.json())
-      .then((data) => this.setState({
-        countries: data.sort((a: any, b: any) => a.Country.localeCompare(b.Country))
-      }))
+      .then((data) => {
+        const sortedData = data.sort((a: any, b: any) => a.Country.localeCompare(b.Country));
+        this.setState({
+          countries: sortedData,
+          currentSlug: sortedData[0].Slug
+        });
+        this.fetchCountryData(sortedData[0].Slug);
+      })
       .catch((err) => console.log(err))
+  }
+
+  fetchCountryData = (slug: string) => {
+    fetch(`https://api.covid19api.com/total/country/${slug}`)
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({
+          countryData: data
+        });
+      })
+  }
+
+  handleCountryChange = (e: any) => {
+    this.setState({
+      currentSlug: e.target.value
+    });
+    this.fetchCountryData(e.target.value);
+  }
+
+  componentDidMount() {
+    this.fetchCountries();
   }
 
   render() {
     return (
+      this.state.countries[0] ?
       <Card>
-        <LocationSelector countries={this.state.countries} />
+        <LocationSelector onChange={this.handleCountryChange} value={this.state.currentSlug} countries={this.state.countries} />
         <Chart data={this.state.countryData} />
       </Card>
+      : null
     );
   }
 }
