@@ -1,7 +1,12 @@
 import React from 'react';
 import Chart from 'chart.js';
 
-export class LineGraph extends React.Component {
+type LineGraphProps = {
+  labels: string[];
+  data: number[];
+}
+
+export class LineGraph extends React.Component<LineGraphProps, {}> {
   private chartRef: React.RefObject<HTMLCanvasElement>;
 
   constructor(props: any) {
@@ -17,14 +22,16 @@ export class LineGraph extends React.Component {
     new Chart(myChartRef, {
       type: "line",
       data: {
-        labels: ['Jan', '', '', 'Apr', 'May'],
+        labels: this.props.labels,
         datasets: [
           {
-            label: "Sales",
-            data: [86, 25, 80, 67, 91],
+            label: "New cases",
+            data: this.props.data,
             pointBackgroundColor: '#4285f4',
             borderColor: '#4285f4',
-            backgroundColor: '#EAF0FD'
+            backgroundColor: '#EAF0FD',
+            lineTension: 0,
+            pointRadius: 0
           }
         ]
       },
