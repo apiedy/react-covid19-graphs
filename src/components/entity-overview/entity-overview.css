@@ -1,0 +1,9 @@
+.entity-overview {
+  padding: 0 16px 16px 16px;
+}
+
+.entity-name {
+  color: #222222;
+  font-size: 14px;
+  padding-bottom: 12px;
+}

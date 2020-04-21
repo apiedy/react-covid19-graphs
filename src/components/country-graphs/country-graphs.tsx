@@ -57,11 +57,11 @@ export class CountryGraphs extends React.Component<{}, GraphsState> {
   render() {
     return (
       this.state.countries[0] ?
-      <Card>
-        <LocationSelector onChange={this.handleCountryChange} value={this.state.currentSlug} countries={this.state.countries} />
-        <Chart data={this.state.countryData} />
-      </Card>
-      : null
+        <Card>
+          <LocationSelector onChange={this.handleCountryChange} value={this.state.currentSlug} countries={this.state.countries} />
+          <Chart data={this.state.countryData} />
+        </Card>
+        : null
     );
   }
 }
