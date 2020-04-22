@@ -1,0 +1,17 @@
+.new-cases {
+  border: 1px solid #dfe1e5;
+  border-radius: 8px;
+}
+
+.new-cases .title {
+  padding: 16px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.new-cases-content {
+  padding: 16px;
+}
+
+.new-cases-content .selector {
+  padding-bottom: 8px;
+}
