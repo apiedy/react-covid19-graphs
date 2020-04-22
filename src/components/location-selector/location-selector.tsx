@@ -23,14 +23,14 @@ const BootstrapInput = withStyles((theme: Theme) =>
     input: {
       borderRadius: 18,
       position: 'relative',
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: '#E8F0FE',
       border: '1px solid #dfe1e5',
       fontSize: 14,
       height: 18,
       padding: '8px 12px',
       '&:focus': {
         borderRadius: 18,
-        backgroundColor: theme.palette.background.paper
+        backgroundColor: '#E8F0FE'
       }
     }
   })
