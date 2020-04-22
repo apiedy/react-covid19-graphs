@@ -8,6 +8,10 @@
   border-bottom: 1px solid rgba(0,0,0,.12);
 }
 
-.new-cases .graph {
+.new-cases-content {
   padding: 16px;
+}
+
+.new-cases-content .selector {
+  padding-bottom: 8px;
 }
