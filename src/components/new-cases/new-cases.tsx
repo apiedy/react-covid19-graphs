@@ -37,18 +37,16 @@ export class NewCases extends React.Component<{}, NewCasesState> {
     const dayBeforeStart = moment(this.startDate).subtract(1, 'd');
     const filteredCaseData = data.filter((x: any) => moment(x.Date).isSameOrAfter(dayBeforeStart)).map((x: any) => ({cases: x.Confirmed, date: x.Date}));
     const newCaseData = ((data: any[]) => {
-      let sixFromCurrent = moment(this.startDate).add(6, 'd');
       let x = [];
       for (let i = 1; i < data.length; i++) {
-        const dateLabel = moment(data[i].date).isBefore(sixFromCurrent) ? '' : data[i].date;
-        if (moment(data[i].date).isSame(sixFromCurrent)) sixFromCurrent.add(6, 'd');
-        x.push({newCases: data[i].cases - data[i - 1].cases, date: dateLabel});
+        x.push({newCases: data[i].cases - data[i - 1].cases, date: data[i].date});
       }
+
       return x;
     })(filteredCaseData);
 
     this.setState({
-      chartLabels: newCaseData.map(x => (x.date !== '') ? moment(x.date).utc().format('MMM D') : x.date),
+      chartLabels: newCaseData.map(x => moment(x.date).utc().format('MMM D')),
       chartData: newCaseData.map(x => x.newCases)
     });
   }

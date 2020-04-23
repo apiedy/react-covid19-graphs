@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="app">
       <Container maxWidth="lg">
-        <Grid container spacing={5}>
+        <Grid container spacing={3}>
           <Grid item xs={12} sm={7}>
             <NewCases />
           </Grid>
