@@ -5,6 +5,7 @@ import './new-cases.css';
 import { LineGraph } from '../line-graph/line-graph';
 import { LocationSelector } from '../location-selector/location-selector';
 import { countries } from '../../shared/countries';
+import { DataDisclaimer } from '../data-disclaimer/data-disclaimer';
 
 type NewCasesState = {
   chartLabels: string[];
@@ -81,6 +82,7 @@ export class NewCases extends React.Component<{}, NewCasesState> {
 
           { this.state.chartLabels.length && <LineGraph labels={this.state.chartLabels} data={this.state.chartData} /> }
         </div>
+        <DataDisclaimer />
       </div>
     )
   }

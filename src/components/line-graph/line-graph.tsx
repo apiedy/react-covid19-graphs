@@ -19,7 +19,7 @@ export class LineGraph extends React.Component<LineGraphProps, {}> {
     const myChartRef = this.chartRef.current?.getContext("2d");
     
     if(myChartRef) {
-      let gradient = myChartRef.createLinearGradient(0, 0, 0, 200);
+      let gradient = myChartRef.createLinearGradient(0, 0, 0, 225);
       gradient.addColorStop(0, 'rgba(234, 240, 253, 1)');
       gradient.addColorStop(1, 'rgba(234, 240, 253, 0)');
 
@@ -30,7 +30,7 @@ export class LineGraph extends React.Component<LineGraphProps, {}> {
           datasets: [
             {
               borderWidth: 2,
-              label: "New cases",
+              label: 'New cases',
               data: this.props.data,
               pointBackgroundColor: '#4285f4',
               borderColor: '#4285f4',
@@ -42,6 +42,7 @@ export class LineGraph extends React.Component<LineGraphProps, {}> {
         },
         options: {
           //Customize chart options
+          maintainAspectRatio: false,
           legend: {
             display: false
           },
@@ -81,6 +82,7 @@ export class LineGraph extends React.Component<LineGraphProps, {}> {
     return (
       <div className="graph-container">
         <canvas
+          height="225"
           id="myChart"
           ref={this.chartRef}
         />
