@@ -1,5 +1,13 @@
 .entity-overview {
-  padding: 0 16px 16px 16px;
+  border-top: 1px solid #dfe1e5;
+  margin: 0 16px;
+  padding-bottom: 16px;
+  padding-top: 12px;
+}
+
+.entity-overview:first-child {
+  border: none;
+  padding-top: 0px;
 }
 
 .entity-name {

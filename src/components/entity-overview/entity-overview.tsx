@@ -4,18 +4,14 @@ import { Grid } from '@material-ui/core';
 
 import './entity-overview.css';
 
-const formatNumber = (a: number): string => {
-  let b = [];
-
-  while (a > 0) {
-    b.push(a % 1000);
-    a = Math.floor(a/1000);
-  }
-
-  return b.reverse().join(',');
+type EntityOverviewProps = {
+  entityName: string;
+  confirmed: number;
+  recovered: number;
+  deaths: number;
 }
 
-export function EntityOverview(props: any) {
+export function EntityOverview(props: EntityOverviewProps) {
   return (
     <div className="entity-overview">
       <div className="entity-name">
@@ -26,21 +22,21 @@ export function EntityOverview(props: any) {
         <Grid className="status-wrapper" item xs={4}>
           <div className="status-overview">
             <div className="status">Confirmed</div>
-            <div className="number">{ formatNumber(props.confirmed) }</div>
+            <div className="number">{ props.confirmed.toLocaleString('en') }</div>
           </div>
         </Grid>
 
         <Grid className="status-wrapper" item xs={4}>
           <div className="status-overview">
             <div className="status">Recovered</div>
-            <div className="number">{ formatNumber(props.recovered) }</div>
+            <div className="number">{ props.recovered.toLocaleString('en') }</div>
           </div>
         </Grid>
 
         <Grid className="status-wrapper" item xs={4}>
           <div className="status-overview">
             <div className="status">Deaths</div>
-            <div className="number">{ formatNumber(props.deaths) }</div>
+            <div className="number">{ props.deaths.toLocaleString('en') }</div>
           </div>
         </Grid>
       </Grid>
