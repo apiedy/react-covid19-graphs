@@ -59,11 +59,10 @@ export class NewCases extends React.Component<{}, NewCasesState> {
   }
 
   componentDidMount() {
-    const sortedCountries = countries.sort((a: any, b: any) => a.Country.localeCompare(b.Country));
     this.setState({
-      currentCountry: sortedCountries[0].Slug
+      currentCountry: 'united-states'
     });
-    this.fetchCountryData(sortedCountries[0].Slug);
+    this.fetchCountryData('united-states');
   }
 
   render() {

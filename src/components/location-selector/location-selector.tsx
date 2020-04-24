@@ -46,7 +46,8 @@ export function LocationSelector(props: any) {
         MenuProps={MenuProps}
         input={<BootstrapInput />}
       >
-        { props.countries.map((country: any) => <MenuItem key={country.Slug} value={country.Slug}>{countryToFlag(country.ISO2)} {country.Country}</MenuItem>) }
+        { props.countries.sort((a: any, b: any) => a.Country.localeCompare(b.Country))
+                          .map((country: any) => <MenuItem key={country.Slug} value={country.Slug}>{country.Country}</MenuItem>) }
       </Select>
     </div>
   )
