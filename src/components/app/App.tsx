@@ -4,21 +4,25 @@ import './app.css';
 import { Grid, Container } from '@material-ui/core';
 import { CasesOverview } from '../cases-overview/cases-overview';
 import { NewCases } from '../new-cases/new-cases';
+import { Header } from '../header/header.component';
 
 function App() {
   return (
-    <div className="app">
-      <Container maxWidth="lg">
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={7}>
-            <NewCases />
-          </Grid>
+    <div>
+      <Header />
+      <div className="app">
+        <Container maxWidth="lg">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={7}>
+              <NewCases />
+            </Grid>
 
-          <Grid item xs={12} sm={5}>
-            <CasesOverview />
+            <Grid item xs={12} sm={5}>
+              <CasesOverview />
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </div>
     </div>
   );
 }
