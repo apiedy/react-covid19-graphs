@@ -33,6 +33,7 @@ type LineGraphProps = {
 
 export class LineGraph extends React.Component<LineGraphProps, {}> {
   private chartRef: React.RefObject<HTMLCanvasElement>;
+  private chart: any;
 
   constructor(props: any) {
     super(props);
@@ -40,7 +41,7 @@ export class LineGraph extends React.Component<LineGraphProps, {}> {
     this.chartRef = React.createRef();
   }
 
-  setupChart = () => {
+  componentDidMount() {
     const myChartRef = this.chartRef.current?.getContext("2d");
     
     if(myChartRef) {
@@ -48,7 +49,7 @@ export class LineGraph extends React.Component<LineGraphProps, {}> {
       gradient.addColorStop(0, 'rgba(234, 240, 253, 1)');
       gradient.addColorStop(1, 'rgba(234, 240, 253, 0)');
 
-      new Chart(myChartRef, {
+      this.chart = new Chart(myChartRef, {
         type: 'LineWithLine',
         data: {
           labels: this.props.labels,
@@ -111,12 +112,13 @@ export class LineGraph extends React.Component<LineGraphProps, {}> {
     }
   }
 
-  componentDidMount() {
-    this.setupChart();
-  }
-
   componentDidUpdate() {
-    this.setupChart();
+    this.chart.data.labels = this.props.labels;
+    this.chart.data.datasets?.forEach((dataset: any) => {
+      dataset.data = this.props.data
+    });
+
+    this.chart.update();
   }
 
   render() {
