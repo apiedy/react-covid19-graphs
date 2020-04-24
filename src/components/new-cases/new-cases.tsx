@@ -5,6 +5,7 @@ import { LineGraph } from '../line-graph/line-graph';
 import { LocationSelector } from '../location-selector/location-selector';
 import { countries } from '../../shared/countries';
 import { DataDisclaimer } from '../data-disclaimer/data-disclaimer';
+import { CircularProgress } from '@material-ui/core';
 
 type NewCasesProps = {
   chartLabels: string[];
@@ -25,7 +26,7 @@ export function NewCases(props: NewCasesProps) {
           <LocationSelector value={props.currentCountry} onChange={(slug: string) => props.onCountryChange(slug)} countries={countries} />
         </div>
 
-        { props.chartLabels.length && <LineGraph labels={props.chartLabels} data={props.chartData} /> }
+        { props.chartLabels.length ? <LineGraph labels={props.chartLabels} data={props.chartData} /> : <div className="progress"><CircularProgress /></div> }
       </div>
       <DataDisclaimer />
     </div>

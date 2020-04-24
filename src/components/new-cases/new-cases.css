@@ -20,3 +20,7 @@
 .new-cases-content .graph-container {
   margin: 0 16px;
 }
+
+.progress {
+  text-align: center;
+}
