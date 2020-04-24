@@ -6,6 +6,7 @@ import './cases-overview.css';
 
 type CasesOverviewState = {
   worldwide: any;
+  country: any;
 }
 
 export class CasesOverview extends React.Component<{}, CasesOverviewState> {
@@ -13,7 +14,8 @@ export class CasesOverview extends React.Component<{}, CasesOverviewState> {
     super(props);
 
     this.state = {
-      worldwide: null
+      worldwide: null,
+      country: null
     };
   }
 
@@ -22,7 +24,8 @@ export class CasesOverview extends React.Component<{}, CasesOverviewState> {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          worldwide: data.Global
+          worldwide: data.Global,
+          country: data.Countries[23]
         });
       });
   }
@@ -46,6 +49,16 @@ export class CasesOverview extends React.Component<{}, CasesOverviewState> {
               confirmed={ this.state.worldwide.TotalConfirmed }
               recovered={ this.state.worldwide.TotalRecovered }
               deaths={ this.state.worldwide.TotalDeaths }
+            />
+          }
+
+          {
+            this.state.country &&
+            <EntityOverview
+              entityName={ this.state.country.Country }
+              confirmed={ this.state.country.TotalConfirmed }
+              recovered={ this.state.country.TotalRecovered }
+              deaths={ this.state.country.TotalDeaths }
             />
           }
         </div>
