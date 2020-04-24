@@ -2,13 +2,13 @@ import React from 'react';
 
 import { MenuItem, Select, InputBase, Theme, withStyles, createStyles } from '@material-ui/core';
 
-function countryToFlag(isoCode: string) {
-  return typeof String.fromCodePoint !== 'undefined'
-    ? isoCode
-        .toUpperCase()
-        .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
-    : isoCode;
-}
+// function countryToFlag(isoCode: string) {
+//   return typeof String.fromCodePoint !== 'undefined'
+//     ? isoCode
+//         .toUpperCase()
+//         .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+//     : isoCode;
+// }
 
 const MenuProps = {
   PaperProps: {
