@@ -1,11 +1,17 @@
 import React from 'react';
 
 import { Grid } from '@material-ui/core';
-import { StatusOverview } from '../status-overview/status-overview';
 
 import './entity-overview.css';
 
-export function EntityOverview(props: any) {
+type EntityOverviewProps = {
+  entityName: string;
+  confirmed: number;
+  recovered: number;
+  deaths: number;
+}
+
+export function EntityOverview(props: EntityOverviewProps) {
   return (
     <div className="entity-overview">
       <div className="entity-name">
@@ -13,16 +19,25 @@ export function EntityOverview(props: any) {
       </div>
       
       <Grid container>
-        <Grid item xs={4}>
-          <StatusOverview number={ props.confirmed } status="Confirmed"></StatusOverview>
+        <Grid className="status-wrapper" item xs={4}>
+          <div className="status-overview">
+            <div className="status">Confirmed</div>
+            <div className="number">{ props.confirmed.toLocaleString('en') }</div>
+          </div>
         </Grid>
 
-        <Grid item xs={4}>
-          <StatusOverview number={ props.recovered } status="Recovered"></StatusOverview>
+        <Grid className="status-wrapper" item xs={4}>
+          <div className="status-overview">
+            <div className="status">Recovered</div>
+            <div className="number">{ props.recovered.toLocaleString('en') }</div>
+          </div>
         </Grid>
 
-        <Grid item xs={4}>
-          <StatusOverview number={ props.deaths } status="Deaths"></StatusOverview>
+        <Grid className="status-wrapper" item xs={4}>
+          <div className="status-overview">
+            <div className="status">Deaths</div>
+            <div className="number">{ props.deaths.toLocaleString('en') }</div>
+          </div>
         </Grid>
       </Grid>
     </div>

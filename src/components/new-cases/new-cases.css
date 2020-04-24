@@ -9,9 +9,14 @@
 }
 
 .new-cases-content {
-  padding: 16px;
+  padding: 16px 0;
 }
 
 .new-cases-content .selector {
+  margin: 0 16px;
   padding-bottom: 8px;
+}
+
+.new-cases-content .graph-container {
+  margin: 0 16px;
 }

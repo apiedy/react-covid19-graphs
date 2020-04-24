@@ -1,3 +1,11 @@
 .app {
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tracker {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 0;
 }

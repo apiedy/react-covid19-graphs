@@ -1,9 +1,41 @@
 .entity-overview {
-  padding: 0 16px 16px 16px;
+  border-top: 1px solid #dfe1e5;
+  margin: 0 16px;
+  padding-bottom: 16px;
+  padding-top: 12px;
+}
+
+.entity-overview:first-child {
+  border: none;
+  padding-top: 0px;
 }
 
 .entity-name {
   color: #222222;
   font-size: 14px;
   padding-bottom: 12px;
+}
+
+.status-wrapper .status-overview {
+  padding-left: 8px;
+  border-right: 1px solid #dfe1e5;
+}
+
+.status-wrapper:first-child .status-overview {
+  padding-left: 0px;
+}
+
+.status-wrapper:last-child .status-overview {
+  border: none;
+}
+
+.status-overview .status {
+  color: #3C4043;
+  font-size: 12px;
+}
+
+.status-overview .number {
+  color: #202124;
+  font-size: 16px;
+  padding: 2px 0;
 }
